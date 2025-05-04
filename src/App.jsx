@@ -1,12 +1,18 @@
 import "./App.css";
 
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "./layout/Layout";
+import Home from "./pages/Home";
+
 function App() {
   return (
-    <>
-      <div>
-        <h2 className="text-green-500">User management system</h2>
-      </div>
-    </>
+    <Router>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Layout>
+    </Router>
   );
 }
 

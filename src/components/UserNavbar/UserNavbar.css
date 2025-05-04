@@ -1,0 +1,39 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
+.heading {
+    font-size: 30px;
+    font-weight: bold;
+
+}
+
+
+.sub-navlink {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sub-heading {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+}
+
+
+.heading:hover {
+    color: #003b79;
+    cursor: pointer;
+}
+
+.sub-heading:hover {
+    color: #007bff;
+    cursor: pointer;
+}
