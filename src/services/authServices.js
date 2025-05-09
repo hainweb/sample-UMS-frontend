@@ -16,4 +16,16 @@ export const signup = async (formData) => {
   }
 };
 
+export const login = async (formData) => {
+  try {
+    const response = await axios.post(`${API_URL}/auth/login`, formData, {
+      withCredentials: true,
+    });
 
+    console.log("Login response:", response);
+    return response;
+  } catch (error) {
+    console.error("Login error:", error.response?.data || error.message);
+    return null;
+  }
+};
