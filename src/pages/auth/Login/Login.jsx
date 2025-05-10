@@ -2,7 +2,8 @@ import Input from "../../../components/Input/Input";
 import { useState } from "react";
 import Button from "../../../components/Button/Button";
 import { useNavigate } from "react-router-dom";
-import { login } from "../../../services/authServices";
+import { loginService } from "../../../services/authServices";
+import { useAuth } from "../../../context/AuthContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -22,11 +23,13 @@ const Login = () => {
     }));
   };
 
+  const { login } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let response = await login(formData);
+    let response = await loginService(formData);
     if (response?.data.success) {
+      login(response.data.user);
       navigate("/");
     } else {
       setError(response.data.message);

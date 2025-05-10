@@ -16,7 +16,7 @@ export const signup = async (formData) => {
   }
 };
 
-export const login = async (formData) => {
+export const loginService = async (formData) => {
   try {
     const response = await axios.post(`${API_URL}/auth/login`, formData, {
       withCredentials: true,
