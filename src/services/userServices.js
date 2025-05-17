@@ -12,3 +12,16 @@ export const getUserProfile = async () => {
     console.log(error);
   }
 };
+
+export const editUserProfile = async ( formData ) => {
+  console.log('form data',formData);
+  
+  try {
+    const response = await axios.put(`${API_URL}/edit-profile`, formData, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};

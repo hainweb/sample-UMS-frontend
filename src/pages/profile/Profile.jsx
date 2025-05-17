@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getUserProfile } from "../../services/userServices";
+import { editUserProfile, getUserProfile } from "../../services/userServices";
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
 
 const Profile = () => {
   const [user, setUser] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [error, setEror] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     age: 0,
@@ -28,14 +29,23 @@ const Profile = () => {
   }, []);
 
   const handleChange = (e) => {
-    e.preventDefault();
-    setFormData(() => ({
+   
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const response = await editUserProfile(formData);
+    if (response.success) {
+      user.name = formData.name;
+      user.age = formData.age;
+      setIsEdit(false);
+    } else {
+      setEror(response.message || "Some thing went wrong");
+    }
   };
   return (
     <div>
@@ -68,6 +78,7 @@ const Profile = () => {
       ) : (
         <button onClick={handleEdit}>Edit</button>
       )}
+      {error && <h3 className="error">{error}</h3>}
     </div>
   );
 };
