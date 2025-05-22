@@ -1,6 +1,8 @@
+import { useAuth } from "../../context/AuthContext";
 import "./UserNavbar.css";
 import { useNavigate } from "react-router-dom";
 const UserNavbar = () => {
+  const {user} = useAuth();
   const navigate = useNavigate();
   return (
     <div>
@@ -9,6 +11,7 @@ const UserNavbar = () => {
           Profile manager
         </h2>
         <div className="sub-navlink">
+          <h3 className="user-name">{user?.name}</h3>
           <h3 className="sub-heading" onClick={() => navigate("/")}>
             Home
           </h3>
