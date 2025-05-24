@@ -7,6 +7,7 @@ import Signup from "./pages/auth/Signup/Signup";
 import Login from "./pages/auth/Login/Login";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Profile from "./pages/profile/Profile";
+import AdminHome from "./pages/admin/AdminHome";
 
 function App() {
   return (
@@ -23,7 +24,16 @@ function App() {
           />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/profile" element={<ProtectedRoutes><Profile /></ProtectedRoutes>} />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoutes>
+                <Profile />
+              </ProtectedRoutes>
+            }
+          />
+
+          <Route path="/admin" element={<AdminHome />} />
         </Routes>
       </Layout>
     </Router>
