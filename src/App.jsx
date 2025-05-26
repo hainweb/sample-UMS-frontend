@@ -8,12 +8,13 @@ import Login from "./pages/auth/Login/Login";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Profile from "./pages/profile/Profile";
 import AdminHome from "./pages/admin/AdminHome";
+import AdminLayout from "./layout/AdminLayout";
 
 function App() {
   return (
     <Router>
-      <Layout>
-        <Routes>
+      <Routes>
+        <Route element={<Layout />}>
           <Route
             path="/"
             element={
@@ -32,10 +33,11 @@ function App() {
               </ProtectedRoutes>
             }
           />
-
+        </Route>
+        <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminHome />} />
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </Router>
   );
 }
