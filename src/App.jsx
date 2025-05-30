@@ -9,6 +9,7 @@ import ProtectedRoutes from "./components/ProtectedRoutes";
 import Profile from "./pages/profile/Profile";
 import AdminHome from "./pages/admin/AdminHome";
 import AdminLayout from "./layout/AdminLayout";
+import ManageUsers from "./pages/admin/manageUsers/ManageUsers";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         </Route>
         <Route element={<AdminLayout />}>
           <Route path="/admin" element={<AdminHome />} />
+          <Route path="/manage-users" element={<ManageUsers />} />
         </Route>
       </Routes>
     </Router>
