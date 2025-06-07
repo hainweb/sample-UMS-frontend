@@ -10,6 +10,7 @@ import Profile from "./pages/profile/Profile";
 import AdminHome from "./pages/admin/AdminHome";
 import AdminLayout from "./layout/AdminLayout";
 import ManageUsers from "./pages/admin/manageUsers/ManageUsers";
+import VerifyAdmin from "./components/VerifyAdmin";
 
 function App() {
   return (
@@ -36,7 +37,14 @@ function App() {
           />
         </Route>
         <Route element={<AdminLayout />}>
-          <Route path="/admin" element={<AdminHome />} />
+          <Route
+            path="/admin"
+            element={
+              <VerifyAdmin>
+                <AdminHome />
+              </VerifyAdmin>
+            }
+          />
           <Route path="/manage-users" element={<ManageUsers />} />
         </Route>
       </Routes>
