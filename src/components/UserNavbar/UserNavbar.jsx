@@ -2,7 +2,7 @@ import { useAuth } from "../../context/AuthContext";
 import "./UserNavbar.css";
 import { useNavigate } from "react-router-dom";
 const UserNavbar = () => {
-  const {user} = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
   return (
     <div>
@@ -12,6 +12,11 @@ const UserNavbar = () => {
         </h2>
         <div className="sub-navlink">
           <h3 className="user-name">{user?.name}</h3>
+          {user?.role == "admin" && (
+            <h3 className="sub-heading" onClick={() => navigate("/admin")}>
+              Admin Panel
+            </h3>
+          )}
           <h3 className="sub-heading" onClick={() => navigate("/")}>
             Home
           </h3>
