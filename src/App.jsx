@@ -11,6 +11,7 @@ import AdminHome from "./pages/admin/AdminHome";
 import AdminLayout from "./layout/AdminLayout";
 import ManageUsers from "./pages/admin/manageUsers/ManageUsers";
 import VerifyAdmin from "./components/VerifyAdmin";
+import UnAuthorized from "./pages/unAuthorize/UnAuthorized";
 
 function App() {
   return (
@@ -46,9 +47,10 @@ function App() {
             }
           />
           <Route path="/manage-users" element={<ManageUsers />} />
-        </Route>
+        </Route> 
+          <Route path="/unauthorized" element={<UnAuthorized />} />
       </Routes>
-    </Router>
+    </Router> 
   );
 }
 
