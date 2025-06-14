@@ -12,8 +12,26 @@ import AdminLayout from "./layout/AdminLayout";
 import ManageUsers from "./pages/admin/manageUsers/ManageUsers";
 import VerifyAdmin from "./components/VerifyAdmin";
 import UnAuthorized from "./pages/unAuthorize/UnAuthorized";
+import { useEffect } from "react";
+import { getUser } from "./services/userServices";
+import { useAuth } from "./context/AuthContext";
 
 function App() {
+  const { login } = useAuth();
+  useEffect(() => {
+    const verifyUser = async () => {
+      try {
+        const response = await getUser();
+        if (response.success) {
+          login(response.user);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    verifyUser();
+  }, []);
   return (
     <Router>
       <Routes>
@@ -46,11 +64,18 @@ function App() {
               </VerifyAdmin>
             }
           />
-          <Route path="/manage-users" element={<ManageUsers />} />
-        </Route> 
-          <Route path="/unauthorized" element={<UnAuthorized />} />
+          <Route
+            path="/manage-users"
+            element={
+              <VerifyAdmin>
+                <ManageUsers />
+              </VerifyAdmin>
+            }
+          />
+        </Route>
+        <Route path="/unauthorized" element={<UnAuthorized />} />
       </Routes>
-    </Router> 
+    </Router>
   );
 }
 
