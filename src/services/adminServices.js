@@ -12,3 +12,15 @@ export const getAllUsers = async () => {
     console.error(error);
   }
 };
+
+
+export const deleteUser = async (userId) => {
+  try {
+    const response = await axios.delete(`${API_URL}/admin/delete-user/${userId}`,  {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};

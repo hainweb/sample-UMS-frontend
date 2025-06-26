@@ -1,9 +1,8 @@
 import React from "react";
 import { useEffect } from "react";
-import { getAllUsers } from "../../../services/adminServices";
+import { deleteUser, getAllUsers } from "../../../services/adminServices";
 import { useState } from "react";
 import Button from "../../../components/Button/Button";
-import { deleteUser } from "../../../services/userServices";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
