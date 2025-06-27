@@ -29,3 +29,14 @@ export const loginService = async (formData) => {
     return null;
   }
 };
+
+export const doLogout = async () => {
+  try {
+    const response = await axios.post(`${API_URL}/auth/logout`, {
+      withCredentials: true,
+    });
+    return response.data
+  } catch (error) {
+    console.error(error);
+  }
+};
